@@ -1,0 +1,32 @@
+:root {
+  --primary: #4361ee;
+  --primary-dark: #3f37c9;
+  --accent: #4cc9f0;
+  --background: #f8f9fa;
+  --text: #212529;
+  --card: #ffffff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --radius: 12px;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background);
+  min-height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 1rem;
+  }
+}
