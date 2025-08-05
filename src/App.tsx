@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import LinkForm from './components/LinkForm/LinkForm';
-import LinkList from './components/LinkList/LinkList';
+import type LinkForm from './components/LinkForm/LinkForm';
+import type LinkList from './components/LinkList/LinkList';
 import './App.css';
 
 export interface Link {
