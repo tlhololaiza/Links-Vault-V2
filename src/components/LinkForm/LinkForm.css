@@ -1,65 +1,225 @@
 .link-form {
-  background: var(--card);
-  padding: 1.5rem;
-  border-radius: var(--radius);
-  margin-bottom: 2rem;
-  box-shadow: var(--shadow);
-  transition: all 0.3s ease;
+  background: var(--surface);
+  padding: var(--space-8);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--space-8);
+  box-shadow: var(--shadow-xl);
+  transition: all var(--transition-slow);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.link-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-400) 0%, var(--accent) 100%);
 }
 
 .link-form:hover {
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl), 0 25px 50px -12px rgba(0, 0, 0, 0.15);
 }
 
 .link-form h2 {
-  margin-top: 0;
-  color: var(--primary);
-  font-weight: 500;
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin: 0 0 var(--space-8) 0;
+  color: var(--text-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-2xl);
+  background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.link-form h2::before {
+  content: '🔗';
+  font-size: var(--font-size-xl);
+  -webkit-text-fill-color: initial;
+  background: none;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40%, 43% {
+    transform: translateY(-8px);
+  }
+  70% {
+    transform: translateY(-4px);
+  }
+  90% {
+    transform: translateY(-2px);
+  }
 }
 
 .form-actions {
   display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border);
 }
 
 .form-actions button {
-  padding: 0.75rem 1.5rem;
+  padding: var(--space-4) var(--space-8);
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: all 0.2s ease;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-base);
+  transition: all var(--transition-normal);
   flex: 1;
-  min-height: 44px; /* Accessibility - minimum touch target */
+  min-height: 48px;
+  position: relative;
+  overflow: hidden;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.form-actions button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.form-actions button:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 .form-actions button[type="submit"] {
-  background-color: var(--primary);
+  background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
   color: white;
+  box-shadow: var(--shadow-md);
 }
 
 .form-actions button[type="submit"]:hover:not(:disabled) {
-  background-color: var(--primary-dark);
+  background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.form-actions button[type="submit"]:active {
+  transform: translateY(0);
 }
 
 .form-actions button[type="submit"]:disabled {
-  background-color: #ccc;
+  background: var(--neutral-300);
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .form-actions button[type="button"] {
-  background-color: #e9ecef;
-  color: var(--text);
+  background: var(--neutral-100);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
 }
 
 .form-actions button[type="button"]:hover {
-  background-color: #dee2e6;
+  background: var(--neutral-200);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--neutral-300);
 }
 
-/* Remove form-group styles since they're now in FormField.css */
+/* Add icons to buttons */
+.form-actions button[type="submit"]::after {
+  content: '✓';
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all var(--transition-fast);
+}
+
+.form-actions button[type="submit"]:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.form-actions button[type="button"]::after {
+  content: '✕';
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all var(--transition-fast);
+}
+
+.form-actions button[type="button"]:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Responsive Design */
+@media (max-width: 320px) {
+  .link-form {
+    padding: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+  
+  .link-form h2 {
+    font-size: var(--font-size-xl);
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  
+  .form-actions button {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (min-width: 321px) and (max-width: 468px) {
+  .link-form {
+    padding: var(--space-5);
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+}
+
+@media (min-width: 469px) and (max-width: 720px) {
+  .link-form {
+    padding: var(--space-6);
+  }
+}
+
+@media (min-width: 721px) and (max-width: 1024px) {
+  .link-form {
+    padding: var(--space-8);
+  }
+}
+
+@media (min-width: 1025px) {
+  .link-form {
+    max-width: 800px;
+    margin: 0 auto var(--space-8) auto;
+  }
+}
