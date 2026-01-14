@@ -16,46 +16,13 @@
   color: var(--primary);
   font-weight: 500;
   font-size: 1.5rem;
-}
-
-.form-group {
-  margin-bottom: 1.25rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: var(--text);
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
-  box-sizing: border-box;
-  font-family: inherit;
-  transition: border 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
-}
-
-.form-group textarea {
-  min-height: 100px;
-  resize: vertical;
+  margin-bottom: 1.5rem;
 }
 
 .form-actions {
   display: flex;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .form-actions button {
@@ -64,8 +31,10 @@
   border-radius: 8px;
   cursor: pointer;
   font-weight: 500;
+  font-size: 1rem;
   transition: all 0.2s ease;
   flex: 1;
+  min-height: 44px; /* Accessibility - minimum touch target */
 }
 
 .form-actions button[type="submit"] {
@@ -73,9 +42,14 @@
   color: white;
 }
 
-.form-actions button[type="submit"]:hover {
+.form-actions button[type="submit"]:hover:not(:disabled) {
   background-color: var(--primary-dark);
   transform: translateY(-2px);
+}
+
+.form-actions button[type="submit"]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
 .form-actions button[type="button"] {
@@ -87,3 +61,5 @@
   background-color: #dee2e6;
   transform: translateY(-2px);
 }
+
+/* Remove form-group styles since they're now in FormField.css */
