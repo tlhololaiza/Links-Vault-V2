@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import LinkForm from './components/LinkForm/LinkForm';
 import LinkList from './components/LinkList/LinkList';
+import Modal from './components/Modal/Modal';
+import AddLinkButton from './components/AddLinkButton/AddLinkButton';
 import './App.css';
 
 export interface Link {
@@ -17,6 +19,13 @@ function App() {
     return saved ? JSON.parse(saved) : [];
   });
   const [editingLink, setEditingLink] = useState<Link | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (editingLink) {
+      setIsModalOpen(true);
+    }
+  }, [editingLink]);
 
   useEffect(() => {
     localStorage.setItem('links-vault', JSON.stringify(links));
@@ -24,11 +33,13 @@ function App() {
 
   const addLink = (link: Link) => {
     setLinks([...links, link]);
+    setIsModalOpen(false);
   };
 
   const updateLink = (updatedLink: Link) => {
     setLinks(links.map(link => link.id === updatedLink.id ? updatedLink : link));
     setEditingLink(null);
+    setIsModalOpen(false);
   };
 
   const deleteLink = (id: string) => {
@@ -111,18 +122,44 @@ function App() {
           </div>
         </div>
 
+        {/* Show Add Link button when empty */}
+        {links.length === 0 && (
+          <div className="empty-prompt">
+            <p>No links saved yet. Start organizing your web resources!</p>
+            <AddLinkButton onClick={() => setIsModalOpen(true)} />
+          </div>
+        )}
+
+        {/* Show LinkList only when there are links */}
+        {links.length > 0 && (
+          <>
+            <div className="add-link-button-container">
+              <AddLinkButton onClick={() => setIsModalOpen(true)} />
+            </div>
+            <LinkList 
+              links={links} 
+              deleteLink={deleteLink} 
+              setEditingLink={setEditingLink}
+            />
+          </>
+        )}
+      </div>
+
+      {/* Add Link Modal */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
+          setEditingLink(null);
+        }}
+        title={editingLink ? 'Edit Link' : 'Add New Link'}
+      >
         <LinkForm 
           addLink={addLink} 
           updateLink={updateLink} 
           editingLink={editingLink}
         />
-        
-        <LinkList 
-          links={links} 
-          deleteLink={deleteLink} 
-          setEditingLink={setEditingLink}
-        />
-      </div>
+      </Modal>
     </div>
   );
 }

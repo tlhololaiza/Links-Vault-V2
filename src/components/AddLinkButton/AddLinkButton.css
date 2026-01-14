@@ -1,0 +1,85 @@
+.add-link-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: var(--text-sm);
+  font-family: var(--font-system);
+  transition: all var(--duration-fast) var(--ease-out);
+  box-shadow: var(--shadow-sm);
+}
+
+.add-link-button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.add-link-button:active {
+  transform: scale(0.98);
+}
+
+/* Inline variant */
+.add-link-button--inline {
+  background: var(--accent-500);
+  color: white;
+  padding: var(--space-3) var(--space-6);
+  width: 100%;
+}
+
+.add-link-button--inline:hover {
+  background: var(--accent-600);
+}
+
+/* Floating variant */
+.add-link-button--floating {
+  position: fixed;
+  bottom: var(--space-8);
+  right: var(--space-6);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--accent-500);
+  color: white;
+  padding: 0;
+  box-shadow: var(--shadow-lg);
+  z-index: 100;
+}
+
+.add-link-button--floating:hover {
+  background: var(--accent-600);
+  box-shadow: var(--shadow-xl);
+}
+
+.add-link-button-icon {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.add-link-button-text {
+  display: inline;
+}
+
+/* Hide text on floating button */
+.add-link-button--floating .add-link-button-text {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .add-link-button--inline {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-xs);
+  }
+
+  .add-link-button--floating {
+    bottom: var(--space-6);
+    right: var(--space-4);
+    width: 56px;
+    height: 56px;
+  }
+}
