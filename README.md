@@ -148,30 +148,6 @@ Provides dialog functionality for:
 - Responsive sizing
 - Click-outside-to-close behavior
 
-## 🎨 Design System
-
-### Colors
-- **Gradients**: 9 unique gradient combinations for cards
-- **Accents**: Blue (#3b82f6) for interactive elements
-- **Backgrounds**: Neutral grays (50-900)
-- **Text**: White on gradients, gray on light backgrounds
-
-### Typography
-- **Display**: SF Pro Display (serif/system fonts)
-- **Body**: System font stack for consistency
-- **Weights**: 400, 500, 600, 700
-
-### Spacing
-- 24-level spacing scale (space-1 through space-20)
-- Based on 0.25rem units
-- Responsive adjustments at breakpoints
-
-### Breakpoints
-- **Mobile**: 480px and below
-- **Tablet**: 481px - 768px
-- **Desktop**: 769px - 1024px
-- **Wide**: 1025px+
-- **Ultra-wide**: 1400px+
 
 ## 💾 Data Storage
 
@@ -244,60 +220,9 @@ This project demonstrates:
 - No user authentication
 - Search is case-insensitive only
 
-## 🚀 Future Enhancements
-
-Potential features for future versions:
-- [ ] Dark mode theme
-- [ ] Link categories/collections
-- [ ] Sort options (by date, name, tags)
-- [ ] Bulk actions (delete multiple, batch tag)
-- [ ] Import/export links as JSON or CSV
-- [ ] Link preview/screenshot
-- [ ] Favorites/starred links
-- [ ] PWA support for offline access
-- [ ] Cloud sync with backend
-- [ ] Mobile app version
-
-## 📄 License
-
-MIT License - feel free to use this project for personal or commercial purposes.
-
-## 🙏 Contributing
-
-Contributions are welcome! Feel free to:
-- Report bugs
-- Suggest new features
-- Submit pull requests
-- Improve documentation
-
-## 📞 Support
-
-For issues or questions:
-1. Check the [Issues](https://github.com/your-username/Links-Vault-V2/issues) page
-2. Create a new issue with detailed description
-3. Include screenshots if possible
 
 ---
 
-**Made with ❤️ by CodeTribe**
+**Made Tlholo from CodeTribe**
 
-Start organizing your digital discoveries today! 🎉
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
