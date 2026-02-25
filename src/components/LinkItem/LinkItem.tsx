@@ -1,4 +1,5 @@
 import './LinkItem.css';
+import { FiLink } from 'react-icons/fi';
 import type { Link } from '../../types';
 
 interface LinkItemProps {
@@ -12,6 +13,7 @@ const LinkItem = ({ link, deleteLink, setEditingLink }: LinkItemProps) => {
     <div className="link-item">
       <h3>
         <a href={link.url} target="_blank" rel="noopener noreferrer">
+          <FiLink className="link-icon" />
           {link.title}
         </a>
       </h3>

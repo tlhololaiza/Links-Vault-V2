@@ -24,7 +24,7 @@
 }
 
 .empty-state::before {
-  content: '📂';
+  content: none;
   font-size: 3rem;
   display: block;
   margin-bottom: var(--space-3);
@@ -60,7 +60,6 @@
   100% { left: 100%; }
 }
 
-/* Grid layouts for different screen sizes */
 @media (max-width: 480px) {
   .link-list {
     margin-top: 0;
@@ -120,7 +119,6 @@
   }
 }
 
-/* Animation */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -132,7 +130,6 @@
   }
 }
 
-/* Staggered animation for link items */
 .link-item:nth-child(1) { animation-delay: 0.05s; }
 .link-item:nth-child(2) { animation-delay: 0.1s; }
 .link-item:nth-child(3) { animation-delay: 0.15s; }

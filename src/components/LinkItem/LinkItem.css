@@ -56,7 +56,7 @@
 }
 
 .link-item h3::before {
-  content: '🔗';
+  content: none;
   font-size: var(--text-sm);
   opacity: 0.6;
   transition: all var(--duration-fast) var(--ease-out);
@@ -223,7 +223,6 @@
   transform: scale(0.98);
 }
 
-/* External link indicator */
 .link-item h3 a[target="_blank"]::before {
   content: '↗';
   font-size: var(--text-xs);
@@ -237,7 +236,6 @@
   opacity: 1;
 }
 
-/* Responsive Design */
 @media (max-width: 480px) {
   .link-item {
     padding: var(--space-3);

@@ -1,5 +1,6 @@
 import React from 'react';
 import './AddLinkButton.css';
+import { FiPlus } from 'react-icons/fi';
 
 interface AddLinkButtonProps {
   onClick: () => void;
@@ -13,7 +14,7 @@ const AddLinkButton: React.FC<AddLinkButtonProps> = ({ onClick, variant = 'inlin
       onClick={onClick}
       aria-label="Add new link"
     >
-      <span className="add-link-button-icon">+</span>
+      <span className="add-link-button-icon"><FiPlus /></span>
       <span className="add-link-button-text">Add Link</span>
     </button>
   );

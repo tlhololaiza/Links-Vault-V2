@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
 import './LinkForm.css';
 import { InputField, TextAreaField } from '../FormField/FormField';
 import type { Link } from '../../types';
@@ -82,7 +83,7 @@ const LinkForm = ({ addLink, updateLink, editingLink }: LinkFormProps) => {
 
     setIsSubmitting(true);
     
-    // Simulate async operation
+    
     await new Promise(resolve => setTimeout(resolve, 800));
 
     const linkData = {
@@ -96,10 +97,10 @@ const LinkForm = ({ addLink, updateLink, editingLink }: LinkFormProps) => {
     try {
       if (editingLink) {
         updateLink(linkData);
-        setMessage({ type: 'success', text: 'Link updated successfully! ✨' });
+        setMessage({ type: 'success', text: 'Link updated successfully!' });
       } else {
         addLink(linkData);
-        setMessage({ type: 'success', text: 'Link added successfully! 🎉' });
+        setMessage({ type: 'success', text: 'Link added successfully!' });
       }
       
       resetForm();
@@ -130,9 +131,11 @@ const LinkForm = ({ addLink, updateLink, editingLink }: LinkFormProps) => {
 
       {message && (
         <div className={`form-message form-message--${message.type}`}>
-          <span>{message.type === 'success' ? '✓' : '⚠️'}</span>
-          {message.text}
-        </div>
+            <span className="message-icon">
+              {message.type === 'success' ? <FiCheckCircle /> : <FiAlertCircle />}
+            </span>
+            {message.text}
+          </div>
       )}
       
       <div className="form-grid">

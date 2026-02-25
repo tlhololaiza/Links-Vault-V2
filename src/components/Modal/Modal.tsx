@@ -1,5 +1,6 @@
 import React from 'react';
 import './Modal.css';
+import { FiX } from 'react-icons/fi';
 
 interface ModalProps {
   isOpen: boolean;
@@ -27,7 +28,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
             onClick={onClose}
             aria-label="Close modal"
           >
-            ✕
+            <FiX />
           </button>
         </div>
         <div className="modal-body">

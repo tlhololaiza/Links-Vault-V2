@@ -4,6 +4,7 @@ import LinkList from './components/LinkList/LinkList';
 import Modal from './components/Modal/Modal';
 import AddLinkButton from './components/AddLinkButton/AddLinkButton';
 import './App.css';
+import { FiStar, FiLink, FiTag, FiSearch, FiSmartphone, FiZap, FiLock } from 'react-icons/fi';
 
 export interface Link {
   id: string;
@@ -59,7 +60,7 @@ function App() {
         </p>
         
         <div className="app-description">
-          <h2>🌟 Welcome to LinkVault Pro</h2>
+          <h2><FiStar className="feature-star" /> Welcome to LinkVault Pro</h2>
           <p>
             Transform the way you save and organize your digital discoveries! LinkVault Pro is your 
             intelligent companion for curating web content, building knowledge bases, and never losing 
@@ -72,27 +73,27 @@ function App() {
           
           <div className="features-list">
             <div className="feature-item">
-              <span className="feature-icon">🔗</span>
+              <span className="feature-icon"><FiLink /></span>
               <span className="feature-text">Smart Link Organization</span>
             </div>
             <div className="feature-item">
-              <span className="feature-icon">🏷️</span>
+              <span className="feature-icon"><FiTag /></span>
               <span className="feature-text">Flexible Tagging System</span>
             </div>
             <div className="feature-item">
-              <span className="feature-icon">🔍</span>
+              <span className="feature-icon"><FiSearch /></span>
               <span className="feature-text">Powerful Search Engine</span>
             </div>
             <div className="feature-item">
-              <span className="feature-icon">📱</span>
+              <span className="feature-icon"><FiSmartphone /></span>
               <span className="feature-text">Fully Responsive Design</span>
             </div>
             <div className="feature-item">
-              <span className="feature-icon">⚡</span>
+              <span className="feature-icon"><FiZap /></span>
               <span className="feature-text">Lightning Fast Performance</span>
             </div>
             <div className="feature-item">
-              <span className="feature-icon">🔒</span>
+              <span className="feature-icon"><FiLock /></span>
               <span className="feature-text">Secure Local Storage</span>
             </div>
           </div>
@@ -100,7 +101,7 @@ function App() {
       </header>
 
       <div className="main-container">
-        {/* Stats Section */}
+      
         <div className="stats-section">
           <div className="stat-card">
             <div className="stat-number">{links.length}</div>
@@ -122,7 +123,7 @@ function App() {
           </div>
         </div>
 
-        {/* Show Add Link button when empty */}
+        
         {links.length === 0 && (
           <div className="empty-prompt">
             <p>No links saved yet. Start organizing your web resources!</p>
@@ -130,7 +131,7 @@ function App() {
           </div>
         )}
 
-        {/* Show LinkList only when there are links */}
+        
         {links.length > 0 && (
           <>
             <div className="add-link-button-container">
@@ -145,7 +146,7 @@ function App() {
         )}
       </div>
 
-      {/* Add Link Modal */}
+      
       <Modal
         isOpen={isModalOpen}
         onClose={() => {

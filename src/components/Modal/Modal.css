@@ -89,7 +89,6 @@
   padding: var(--space-6);
 }
 
-/* Responsive */
 @media (max-width: 480px) {
   .modal-content {
     width: 95%;

@@ -1,5 +1,6 @@
 import React from 'react';
 import './FormField.css';
+import { FiAlertCircle } from 'react-icons/fi';
 
 interface BaseFieldProps {
   label: string;
@@ -47,6 +48,7 @@ export const InputField: React.FC<InputFieldProps> = ({
       />
       {error && (
         <span id={`${label}-error`} className="error-message">
+          <FiAlertCircle className="error-icon" />
           {error}
         </span>
       )}
@@ -80,6 +82,7 @@ export const TextAreaField: React.FC<TextAreaFieldProps> = ({
       />
       {error && (
         <span id={`${label}-error`} className="error-message">
+          <FiAlertCircle className="error-icon" />
           {error}
         </span>
       )}

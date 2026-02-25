@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './SearchBar.css';
+import { FiSearch, FiX, FiClock, FiTag } from 'react-icons/fi';
 
 interface SearchBarProps {
   searchTerm: string;
@@ -46,7 +47,6 @@ const SearchBar = ({
   };
 
   const handleBlur = () => {
-    // Delay hiding suggestions to allow for clicks
     setTimeout(() => setShowSuggestions(false), 150);
   };
 
@@ -56,7 +56,7 @@ const SearchBar = ({
   return (
     <div className="search-container">
       <div className="search-bar">
-        <span className="search-icon">🔍</span>
+        <span className="search-icon"><FiSearch /></span>
         
         <input
           type="text"
@@ -81,11 +81,10 @@ const SearchBar = ({
             onClick={clearSearch}
             title="Clear search"
           >
-            ✕
+            <FiX />
           </button>
         )}
         
-        {/* Search Suggestions */}
         {showSuggestions && (
           <div className="search-suggestions show">
             {recentSearches.length > 0 && (
@@ -99,7 +98,7 @@ const SearchBar = ({
                     className="suggestion-item"
                     onClick={() => handleSearch(search)}
                   >
-                    <span className="suggestion-icon">🕐</span>
+                    <span className="suggestion-icon"><FiClock /></span>
                     {search}
                   </div>
                 ))}
@@ -115,7 +114,7 @@ const SearchBar = ({
                 className="suggestion-item"
                 onClick={() => handleSearch(tag)}
               >
-                <span className="suggestion-icon">🏷️</span>
+                <span className="suggestion-icon"><FiTag /></span>
                 {tag}
               </div>
             ))}
@@ -123,7 +122,7 @@ const SearchBar = ({
         )}
       </div>
 
-      {/* Search Results Info */}
+      
       {hasResults && (
         <div className={`search-results ${hasResults ? 'show' : ''}`}>
           <div className="results-info">
@@ -161,7 +160,7 @@ const SearchBar = ({
         </div>
       )}
 
-      {/* Filter Chips */}
+      
       {hasResults && (
         <div className={`filter-chips ${hasResults ? 'show' : ''}`}>
           {popularTags
